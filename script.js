@@ -6,6 +6,7 @@ function createCell(size) {
     cell.classList.add("cell");
     cell.style.width = `${GRID_WIDTH / size}px`
     cell.style.height = `${GRID_WIDTH / size}px`
+    cell.addEventListener('mouseenter', handleCellHover)
     return cell;
 }
 
@@ -14,6 +15,10 @@ function fillGrid(size = 16) {
     for (let i = 0; i < size * size; i++) {
         grid.appendChild(createCell(size));
     }
+}
+
+function handleCellHover(event) {
+    event.target.style.backgroundColor = "black"
 }
 
 fillGrid();

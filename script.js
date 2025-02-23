@@ -23,7 +23,7 @@ function fillGrid(size = 16) {
 }
 
 function handleCellHover(event) {
-    event.target.style.backgroundColor = "black"
+    event.target.style.backgroundColor = createRGBColor(generateRandomRGB());
 }
 
 function handleResize() {
@@ -44,6 +44,23 @@ function validateSize(size) {
     }
     const sizeNumber = Number(size);
     return sizeNumber >= 16 && sizeNumber <= 100;
+}
+
+function generateRandomRGB() {
+    const rgb = [];
+    for (let i = 0; i < 3; i++) {
+        const randomByte = Math.floor(Math.random() * 256);
+        rgb.push(randomByte);
+    }
+    return rgb;
+}
+
+function createRGBColor(rgb) {
+    return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+}
+
+function createRGBAColor(rgb, alpha) {
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
 }
 
 fillGrid();

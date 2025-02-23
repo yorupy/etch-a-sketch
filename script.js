@@ -1,5 +1,6 @@
 
 const GRID_WIDTH = 600;
+let alpha = 0.1;
 
 function createCell(size) {
     const cell = document.createElement("div");
@@ -12,6 +13,7 @@ function createCell(size) {
 
 function cleanGrid() {
     const grid = document.querySelector(".grid");
+    alpha = 0.1;
     grid.replaceChildren();
 }
 
@@ -23,7 +25,10 @@ function fillGrid(size = 16) {
 }
 
 function handleCellHover(event) {
-    event.target.style.backgroundColor = createRGBColor(generateRandomRGB());
+    event.target.style.backgroundColor = createRGBAColor(generateRandomRGB(), alpha);
+    if (alpha < 1) {
+        alpha += 0.1;
+    }
 }
 
 function handleResize() {
